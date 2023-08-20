@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 void main() => _runApp();
 
 Future<void> _runApp() async {
-  runApp(MyApp());
-  }
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
-
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -24,16 +23,33 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      MaterialApp(
-          initialRoute: window.defaultRouteName,
-          builder: (context, child) {
-            return Scaffold(
-              // Global GestureDetector that will dismiss the keyboard
-              body: GestureDetector(
-                onTap: () {},
-                child: child,
-              ),
-            );
-          });
+    return MaterialApp(
+      initialRoute: "test",
+      builder: (context, child) {
+        return Scaffold(
+          // Global GestureDetector that will dismiss the keyboard
+          body: GestureDetector(
+            onTap: () {},
+            child: child,
+          ),
+        );
+      },
+      routes: {
+        "test": (context) => const TestPage(),
+      },
+    );
   }
+}
+
+class TestPage extends StatelessWidget {
+  const TestPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        ("测试"),
+      ),
+    );
+  }
+}
